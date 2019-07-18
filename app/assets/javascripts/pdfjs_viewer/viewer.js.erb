@@ -1354,6 +1354,7 @@ var PDFViewerApplication = {
       this.setTitleUsingUrl(file.originalUrl);
       parameters.url = file.url;
     }
+    parameters.withCredentials = true;
     if (args) {
       for (var prop in args) {
         if (!_pdfjsLib.PDFJS.pdfjsNext && prop === 'scale') {
