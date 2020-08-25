@@ -13,7 +13,7 @@
     options.set('defaultUrl', '<%= j pdf_url %>');
     <% end %>
 
-    options.set('verbosity', pdfjsLib.VerbosityLevel['<%= ENV.fetch('PDFJS_VIEWER_VERBOSITY', 'ERRORS') %>']);
+    options.set('verbosity', pdfjsLib.VerbosityLevel['<%= ENV.fetch('PDFJS_VIEWER_VERBOSITY', 'ERRORS').upcase %>']);
     options.set('externalLinkTarget', pdfjsLib.LinkTarget.BLANK);
     options.set('workerSrc', '/pdfjs/web/pdf.worker.js?version=<% PdfjsViewer::Rails::VERSION %>');
     options.set('imageResourcesPath', '/pdfjs/web/images/');

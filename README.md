@@ -72,6 +72,12 @@ an iframe.
 
 NOTE: The helper will render a full HTML document and should not be used in a layout.
 
+### Dealing with "file origin does not match viewer's" error
+
+```
+$ export PDFJS_VIEWER_ORIGINS=http://localhost:3000
+```
+
 ### Verbosity of PDF.js
 
 The verbosity of PDF.js can be set with:
