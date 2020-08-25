@@ -16,7 +16,6 @@ This guide describes how to update the pdf.js javascript library.
 │   │   │       ├── pdfjs
 │   │   │       │   └── pdf.js *
 │   │   │       ├── viewer.js *
-│   │   │       └── viewer_configurations.js
 │   │   └── stylesheets
 │   │       └── pdfjs_viewer
 │   │           ├── application.css
@@ -35,34 +34,6 @@ This guide describes how to update the pdf.js javascript library.
 ```
 
 4. Apply the patches
-
-## `app/assets/javascripts/pdfjs_viewer/viewer.js`:
-
-Replace
-``` javascript
-var DEFAULT_URL = 'compressed.tracemonkey-pldi-09.pdf';
-```
-with
-``` javascript
-var DEFAULT_URL = window.resourceURL;
-```
-
-##
-
-Replace
-``` javascript
-PDFJS.imageResourcesPath = './images/';
-PDFJS.workerSrc = '../build/pdf.worker.js';
-PDFJS.cMapUrl = '../web/cmaps/';
-```
-with
-``` javascript
-PDFJS.imageResourcesPath = '/pdfjs/web/images/';
-PDFJS.workerSrc = '/pdfjs/web/pdf.worker.js?version=<version_number>';
-PDFJS.cMapUrl = '/pdfjs/web/cmaps/';
-```
-
-The version is added as a query string above so we ensure users will get the matching version of the worker despite caching.
 
 ## `app/assets/stylesheets/pdfjs_viewer/pdfjs/viewer.css`
 
