@@ -14,3 +14,4 @@ test/dummy/.sass-cache
 
 Gemfile.lock
 gemfiles/*.lock
+.idea
