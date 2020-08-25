@@ -6,6 +6,9 @@
 <link rel="resource" type="application/l10n" href="/pdfjs/web/locale/locale.properties"/>
 
 <script type="text/javascript">
+  // Do not fail when old code in _extra_head uses PDFJS
+  window.PDFJS = {};
+
   document.addEventListener('webviewerloaded', function () {
     let options = window.PDFViewerApplicationOptions;
 
