@@ -1,6 +1,12 @@
+## Unreleased
+
 ## 0.4
 
 - Update PDF.js to 2.4.456
+
+## 0.3.2
+
+- Add support for Rails 6
 
 ## 0.3.1
 
