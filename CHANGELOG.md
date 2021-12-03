@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 0.4.1
+
+- Update PDF.js to 2.10.377
+
 ## 0.4
 
 - Update PDF.js to 2.4.456

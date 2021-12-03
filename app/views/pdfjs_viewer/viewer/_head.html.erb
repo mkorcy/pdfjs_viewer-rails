@@ -9,7 +9,7 @@
   // Do not fail when old code in _extra_head uses PDFJS
   window.PDFJS = {};
 
-  document.addEventListener('webviewerloaded', function () {
+  parent.document.addEventListener('webviewerloaded', function () {
     let options = window.PDFViewerApplicationOptions;
 
     <% if local_assigns[:pdf_url] %>
@@ -19,6 +19,8 @@
     options.set('verbosity', pdfjsLib.VerbosityLevel['<%= ENV.fetch('PDFJS_VIEWER_VERBOSITY', 'ERRORS').upcase %>']);
     options.set('externalLinkTarget', pdfjsLib.LinkTarget.BLANK);
     options.set('workerSrc', '/pdfjs/web/pdf.worker.js?version=<%= PdfjsViewer::Rails::VERSION %>');
+    options.set('sandboxBundleSrc', '/pdfjs/web/pdf.sandbox.js?version=<%= PdfjsViewer::Rails::VERSION %>');
+    options.set('standardFontDataUrl', '/pdfjs/web/standard_fonts/');
     options.set('imageResourcesPath', '/pdfjs/web/images/');
     options.set('cMapUrl', '/pdfjs/web/cmaps/');
 
@@ -27,7 +29,7 @@
       options.set('locale', 'en-US');
     }
 
-    <%= render 'on_load.js', local_assigns %>
+    <%= render partial: 'pdfjs_viewer/viewer/on_load', formats: [:js], locals: local_assigns %>
   });
 </script>
 
