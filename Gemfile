@@ -15,6 +15,6 @@ gemspec
 
 group :test do
   gem 'capybara', '>= 2.1'
-  gem 'apparition'
+  gem 'apparition', github: 'twalpole/apparition'
   gem 'puma'
 end
