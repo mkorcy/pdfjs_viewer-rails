@@ -30,6 +30,8 @@ This guide describes how to update the pdf.js javascript library.
 │           ├── cmaps *
 │           ├── images *
 │           ├── locale *
+│           ├── standard_fonts *
+│           └── pdf.sandbox.js *
 │           └── pdf.worker.js *
 ```
 
@@ -40,6 +42,29 @@ This guide describes how to update the pdf.js javascript library.
 Replace all `url(images/` with `url(/pdfjs/web/images/`
 
 Take extra care here as there are a few instances of inconsistent naming across pdf.js releases! For example the upgrade to 1.10.100 was not a trivial find and replace.
+
+## `app/assets/javascripts/pdfjs_viewer/viewer.js.erb`
+
+Add to defaultOptions:
+
+```javascript
+  withCredentials: {
+    value: false,
+    kind: OptionKind.API
+  },
+```
+
+Replace:
+
+```javascript
+var HOSTED_VIEWER_ORIGINS = ["null", "http://mozilla.github.io", "https://mozilla.github.io"]; 
+```
+
+with:
+
+```javascript
+var HOSTED_VIEWER_ORIGINS = <%= ENV.fetch("PDFJS_VIEWER_ORIGINS", "").split(",").inspect %>;
+```
 
 ## `app/views/pdfjs_viewer/viewer/_viewer.html.erb`
 
